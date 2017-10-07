@@ -5,9 +5,13 @@
 </ion-header>
 
 <ion-content padding>
-  <p>
-    Placeholder for map widget
-  </p>
+  <!--<ion-nav-buttons side="right">
+    <button ng-click="locate();" class="button button-icon icon ion-pinpoint"></button>
+  </ion-nav-buttons>-->
+
+  <button ion-button (click)="clickButton()" class="button">Initiate Map</button>
+  <div id="map"> </div>
+
   <div class = "menu" id = "home-menu">
     <button ion-button (click)="openActionSheet()" class="button">Update Map</button>
   </div>
