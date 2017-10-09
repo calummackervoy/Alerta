@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
 import L from 'leaflet';
+import { Geofence } from '@ionic-native/geofence';
+import { GeofenceWrapper } from '../../GeofenceWrapper';
 
 @Component({
   selector: 'page-home',
@@ -28,6 +30,11 @@ export class HomePage {
 
       //zoom on user's position
       //this.map.locate({setView: true, maxZoom: 16});
+
+      //add a geofence
+      //TODO: make this a global object
+      var geo = new GeofenceWrapper(new Geofence());
+      geo.addGeofence();
     }
 
   }
