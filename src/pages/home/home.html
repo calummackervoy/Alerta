@@ -9,10 +9,11 @@
     <button ng-click="locate();" class="button button-icon icon ion-pinpoint"></button>
   </ion-nav-buttons>-->
 
-  <button ion-button (click)="clickButton()" class="button">Initiate Map</button>
-  <div id="map"> </div>
+  <!--<button ion-button (click)="clickButton()" class="button">Initiate Map</button>-->
+  <div id="map"> {{ initMap() }}</div>
 
   <div class = "menu" id = "home-menu">
     <button ion-button (click)="openActionSheet()" class="button">Update Map</button>
+    <!--PIN ICON: <ion-icon name="pin"></ion-icon>-->
   </div>
 </ion-content>

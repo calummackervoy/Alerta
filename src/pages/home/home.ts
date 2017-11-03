@@ -17,7 +17,7 @@ export class HomePage {
     this.hasMap = false;
   }
 
-  clickButton() {
+  initMap() {
     if(this.hasMap === false) {
       this.hasMap = true;
 
