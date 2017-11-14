@@ -17,7 +17,7 @@ export class GeofenceWrapper {
 
   public addGeofence() {
     //TODO: pass options in
-    //options describing geofence
+    //TODO: more data about a pin e.g. direction of travel
     let fence = {
       //TODO: generate ID
       id: '69ca1b88-6fbe-4e80-a4d4-ff4d3748acdb', //any unique ID
