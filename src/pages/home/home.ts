@@ -5,6 +5,8 @@ import L from 'leaflet';
 import { Geofence } from '@ionic-native/geofence';
 import { GeofenceWrapper } from '../../GeofenceWrapper';
 import { Geolocation, Geoposition, GeolocationOptions } from '@ionic-native/geolocation';
+import { ModalController } from 'ionic-angular';
+import { AddpinmodalPage } from '../addpinmodal/addpinmodal';
 
 const GEOLOCATION_OPTIONS: GeolocationOptions = {
    maximumAge: 3000, timeout: 5000, enableHighAccuracy: true
@@ -23,7 +25,8 @@ export class HomePage {
   positionMarker: L.Marker;
   positionAccuracyCircle: L.Circle;
 
-  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController,
+    public modalCtrl: ModalController) {
     this.hasMap = false;
   }
 
@@ -92,7 +95,8 @@ export class HomePage {
         {
           text: 'Add Pin',
           handler: () => {
-            console.log('Add Pin clicked');
+            let modal = this.modalCtrl.create(AddpinmodalPage);
+            modal.present();
           }
         },{
           text: 'Update Pin',
