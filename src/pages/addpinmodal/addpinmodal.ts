@@ -15,13 +15,11 @@ import { Map } from '../../Map';
   templateUrl: 'addpinmodal.html',
 })
 export class AddpinmodalPage {
-  map: Map;
   pin = {latitude: 51.505, longitude: -0.09};
   details: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    map: Map) {
-      this.map = map;
+    public map: Map) {
   }
 
   ionViewDidLoad() {
@@ -43,7 +41,13 @@ export class AddpinmodalPage {
       timestamp: null
     };
 
-    //send this to home.ts somehow
+    //TODO: store a pin & its associated details
+    console.log("details received: " + this.details);
+
+    //send this to Map
+    this.map.updateGeoposition(pos);
+
+    //TODO: self-close
   }
 
 }

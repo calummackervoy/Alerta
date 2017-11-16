@@ -52,7 +52,7 @@ export class Map {
 
   }
 
-  updateGeoposition(position: Geoposition) {
+  updateGeoposition(position: Geoposition): void {
     console.log(position.coords.longitude + ' ' + position.coords.latitude);
 
     //create Point
