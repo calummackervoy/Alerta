@@ -7,14 +7,41 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>addpinmodal</ion-title>
+    <ion-title>Add Pin</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <p>
-    Test
-  </p>
+  <div class = "add-pin-modal">
+    <form (ngSubmit)="submit()">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Latitude" name="latitude" [(ngModel)]="pin.latitude" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Longitude" name="longitude" [(ngModel)]="pin.longitude" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" placeholder="Details" name="details" [(ngModel)]="details"></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="submit-col">
+          <button ion-button class="submit-btn" full type="submit">Submit</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </div>
 </ion-content>
