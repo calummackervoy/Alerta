@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import L from 'leaflet';
 import { Map } from '../../Map';
+import { Pin } from '../../Pin';
 
 /**
  * Generated class for the AddpinmodalPage page.
@@ -15,11 +17,11 @@ import { Map } from '../../Map';
   templateUrl: 'addpinmodal.html',
 })
 export class AddpinmodalPage {
-  pin = {latitude: 51.505, longitude: -0.09};
-  details: string;
+  pin: Pin;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public map: Map) {
+      this.pin = new Pin(new L.Marker(), new L.Circle());
   }
 
   ionViewDidLoad() {
@@ -27,25 +29,11 @@ export class AddpinmodalPage {
   }
 
   submit() {
-    //construct a geoposition from the form data
-    let pos = {
-      coords: {
-        latitude: this.pin.latitude,
-        longitude: this.pin.longitude,
-        accuracy: 10,
-        altitude: null,
-        altitudeAccuracy: null,
-        heading: null,
-        speed: null
-      },
-      timestamp: null
-    };
-
-    //TODO: store a pin & its associated details
-    console.log("details received: " + this.details);
+    console.log("submit clicked " + this.pin.latitude + ", " + this.pin.longitude);
 
     //send this to Map
-    this.map.updateGeoposition(pos);
+    this.map.addPin(this.pin.latitude, this.pin.longitude, this.pin.details);
+    //this.map.updateGeoposition(0, pos);
 
     //TODO: self-close
   }
