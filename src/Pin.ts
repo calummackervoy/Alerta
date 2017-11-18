@@ -1,8 +1,10 @@
 import L from 'leaflet';
 
 export class Pin {
+  id: number;
   latitude: number;
   longitude: number;
+  name: string;
   details: string;
   positionMarker: L.Marker;
   positionAccuracyCircle: L.Circle;

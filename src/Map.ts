@@ -6,7 +6,6 @@ import { Pin } from './Pin';
 //Purposes: manages the map & the geolocations attached to it
 
 const DEFAULT_ZOOM = 13;
-const MAX_PINS = 64;
 
 @Injectable()
 export class Map {
@@ -14,14 +13,12 @@ export class Map {
   centre: L.PointTuple;
   hasMap: boolean;
   pins: Pin[];
-  numPins: number;
 
   constructor() {
     this.hasMap = false;
-    this.numPins = 0;
   }
 
-  public addPin(latitude: number, longitude: number, details: string): void {
+  public addPin(latitude: number, longitude: number, details: string, name: string): void {
     console.log("adding pin using detailed parameters");
     let latlng = {lat: latitude, lng: longitude, date: new Date()};
     var pin = new Pin(new L.Marker(latlng).addTo(this.map),
@@ -31,17 +28,17 @@ export class Map {
     pin.latitude = latitude;
     pin.longitude = longitude;
     pin.details = details;
+    pin.name = name;
     //console.log("latitude: " + this.pins[i].latitude);
     //console.log("longitude: " + this.pins[i].longitude);
     //console.log("details: " + this.pins[i].details);
 
-    this.numPins = this.pins.push(pin);
+    pin.id = this.pins.length;
+    this.pins.push(pin);
 
     //TODO: set pin on-click to open a pin detail view
+    //https://codedump.io/share/cXzrXfLOLC1e/1/ionic-2---leaflet-map-onclick-event
     //.on('click', showMarkerMenu)
-
-    //Set Center
-    //this.map.setView(this.pins[this.numPins - 1].positionMarker.latlng, DEFAULT_ZOOM);
   }
 
   init() {
@@ -63,7 +60,7 @@ export class Map {
       }*/
 
       //add default pin
-      this.addPin(51.505, -0.09, "Test details");
+      this.addPin(51.505, -0.09, "Test details", "Central London");
 
       //zoom on user's position
       //this.map.locate({setView: true, maxZoom: 16});
@@ -78,7 +75,7 @@ export class Map {
 
   public updateGeoposition(index: number, position: Geoposition): void {
     //bounds checking
-    if(index < 0 || index >= this.numPins) return;
+    if(index < 0 || index >= this.pins.length) return;
 
     //create Point
     let latlng = {lat: position.coords.latitude, lng: position.coords.longitude, date: new Date()};
@@ -97,7 +94,7 @@ export class Map {
 
   public removePin(index: number) : void {
     //bounds checking
-    if(index < 0 || index >= this.numPins) return;
+    if(index < 0 || index >= this.pins.length) return;
 
     this.pins[index] = null;
   }
@@ -105,6 +102,18 @@ export class Map {
   //swap a specific pin for a new version
   public swapPin(index: number, pin: Pin) : void {
     this.removePin(index);
-    this.addPin(pin.latitude, pin.longitude, pin.details);
+    this.addPin(pin.latitude, pin.longitude, pin.details, pin.name);
+  }
+
+  public centreOnPin(index: number) : void {
+    //bounds checking
+    if(index < 0 || index >= this.pins.length) return;
+
+    //centre on map
+    console.log(index + "/" + this.pins.length);
+    console.log(this.pins[index]);
+    this.map.setView({
+      lat: this.pins[index].latitude,
+      lng: this.pins[index].longitude}, DEFAULT_ZOOM);
   }
 }

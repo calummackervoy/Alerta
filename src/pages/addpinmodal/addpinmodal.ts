@@ -58,7 +58,7 @@ export class AddpinmodalPage {
     console.log("submit clicked " + this.pin.latitude + ", " + this.pin.longitude);
 
     //send this to Map
-    this.map.addPin(this.pin.latitude, this.pin.longitude, this.pin.details);
+    this.map.addPin(this.pin.latitude, this.pin.longitude, this.pin.details, this.pin.name);
     //this.map.updateGeoposition(0, pos);
 
     //TODO: self-close
