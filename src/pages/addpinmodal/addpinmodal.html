@@ -19,14 +19,16 @@
       <ion-row>
         <ion-col>
           <ion-list inset>
+            <p> {{ manualPos }} </p>
+            <div><!--class = "ng-hide" ng-show="manualPos">-->
+              <ion-item>
+                <ion-input type="text" placeholder="Latitude" name="latitude" [(ngModel)]="pin.latitude" required></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-input type="text" placeholder="Latitude" name="latitude" [(ngModel)]="pin.latitude" required></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-input type="text" placeholder="Longitude" name="longitude" [(ngModel)]="pin.longitude" required></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-input type="text" placeholder="Longitude" name="longitude" [(ngModel)]="pin.longitude" required></ion-input>
+              </ion-item>
+            </div>
 
             <ion-item>
               <ion-input type="text" placeholder="Details" name="details" [(ngModel)]="pin.details"></ion-input>
@@ -39,6 +41,7 @@
       <ion-row>
         <ion-col class="submit-col">
           <button ion-button class="submit-btn" full type="submit">Submit</button>
+          <button ion-button>Cancel</button>
         </ion-col>
       </ion-row>
 

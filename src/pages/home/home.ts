@@ -26,6 +26,13 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.map.init();
+
+    //set the click listener
+    this.map.map.on('click', (e: any) => {
+      //open modal for pin creation (with pos)
+      let modal = this.modalCtrl.create(AddpinmodalPage, e);
+      modal.present();
+    });
   }
 
   openActionSheet() {

@@ -18,10 +18,36 @@ import { Pin } from '../../Pin';
 })
 export class AddpinmodalPage {
   pin: Pin;
+  manualPos: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public map: Map) {
+  constructor(public navCtrl: NavController, public params: NavParams,
+      public map: Map) {
       this.pin = new Pin(new L.Marker(), new L.Circle());
+
+      let e = params.get('latlng');
+
+      if(e != undefined && e.lat != undefined &&
+        e.lng != undefined) {
+          this.setPos(e.lat, e.lng);
+      }
+      else {
+        if(e == undefined) console.log("e undefined");
+        else console.log("lat and/or lng undefined");
+        this.manualPos = true;
+      }
+  }
+
+  public setPos(lat: number, long: number): void {
+    //bounds checking
+    if(lat != undefined &&
+      long != undefined) {
+        //stops manual inputs for lat/long appearing
+        this.manualPos = false;
+
+        this.pin.latitude = lat;
+        this.pin.longitude = long;
+    }
+    else console.log("undefined params passed to setPos");
   }
 
   ionViewDidLoad() {

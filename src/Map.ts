@@ -22,67 +22,23 @@ export class Map {
   }
 
   public addPin(latitude: number, longitude: number, details: string): void {
-  //overload for a pre-completed pin
-  //public addPin(pin: Pin) : void;
+    console.log("adding pin using detailed parameters");
+    let latlng = {lat: latitude, lng: longitude, date: new Date()};
+    var pin = new Pin(new L.Marker(latlng).addTo(this.map),
+      new L.Circle(latlng).setRadius(10).addTo(this.map));
+    pin.age = pin.positionMarker.date;
 
-  //public addPin(pinOrLatitude: any, longitude?: number, details?: string) : void {
-    //if (pinOrLatitude && typeof pinOrLatitude === "number") {
-      console.log("adding pin using detailed parameters");
-      let latlng = {lat: latitude, lng: longitude, date: new Date()};
-      var pin = new Pin(new L.Marker(latlng).addTo(this.map), new L.Circle(latlng).addTo(this.map));
+    pin.latitude = latitude;
+    pin.longitude = longitude;
+    pin.details = details;
+    //console.log("latitude: " + this.pins[i].latitude);
+    //console.log("longitude: " + this.pins[i].longitude);
+    //console.log("details: " + this.pins[i].details);
 
-      //pin.positionMarker.setLatLng(latlng);
-      //pin.positionAccuracyCircle.setLatLng(latlng).setRadius(10);
-      pin.age = pin.positionMarker.date;
+    this.numPins = this.pins.push(pin);
 
-      pin.latitude = latitude;
-      pin.longitude = longitude;
-      pin.details = details;
-      //console.log("latitude: " + this.pins[i].latitude);
-      //console.log("longitude: " + this.pins[i].longitude);
-      //console.log("details: " + this.pins[i].details);
-
-      this.numPins = this.pins.push(pin);
-    /*}
-    else {
-      console.log("adding pin as object");
-      this.numPins = this.pins.push(pinOrLatitude);
-    }*/
-
-
-    //search for a blank space
-    /*for(var i = 0; i <= this.numPins; i++) {
-      //is this free space?
-      if(this.pins[i]) {
-        //add the pin here
-        //switch how you add it depending on overload
-        //details
-        if (pinOrLatitude && typeof pinOrLatitude == "number") {
-          console.log("adding pin using detailed parameters");
-
-          let latlng = {lat: pinOrLatitude, lng: longitude, date: new Date()};
-          this.pins[i] = new Pin(new L.Marker(latlng).addTo(this.map), new L.Circle(latlng).addTo(this.map));
-          //this.pins[i].positionMarker.setLatLng(latlng).addTo(this.map);
-          //this.pins[i].positionAccuracyCircle.setLatLng(latlng).setRadius(10).addTo(this.map);
-          this.pins[i].age = this.pins[i].positionMarker.date;
-
-          this.pins[i].latitude = pinOrLatitude;
-          this.pins[i].longitude = longitude;
-          this.pins[i].details = details;
-          //console.log("latitude: " + this.pins[i].latitude);
-          //console.log("longitude: " + this.pins[i].longitude);
-          //console.log("details: " + this.pins[i].details);
-        }
-        //whole pin object
-        else {
-          console.log("adding pin as object");
-          this.pins[i] = pinOrLatitude;
-        }
-
-        //increment numPins if necessary
-        if(i == this.numPins) this.numPins = this.numPins + 1;
-      }
-    }*/
+    //TODO: set pin on-click to open a pin detail view
+    //.on('click', showMarkerMenu)
 
     //Set Center
     //this.map.setView(this.pins[this.numPins - 1].positionMarker.latlng, DEFAULT_ZOOM);
@@ -119,7 +75,6 @@ export class Map {
     }
 
   }
-
 
   public updateGeoposition(index: number, position: Geoposition): void {
     //bounds checking
