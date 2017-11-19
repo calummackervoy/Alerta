@@ -96,7 +96,16 @@ export class Map {
     //bounds checking
     if(index < 0 || index >= this.pins.length) return;
 
-    this.pins[index] = null;
+    //remove from map
+    this.map.removeLayer(this.pins[index].positionMarker);
+    this.map.removeLayer(this.pins[index].positionAccuracyCircle);
+    //remove from list
+    this.pins.splice(index, 1);
+
+    //update the now-incorrect pin ids
+    for(var i = 0; i < this.pins.length; i++) {
+      this.pins[i].id = i;
+    }
   }
 
   //swap a specific pin for a new version
@@ -110,8 +119,6 @@ export class Map {
     if(index < 0 || index >= this.pins.length) return;
 
     //centre on map
-    console.log(index + "/" + this.pins.length);
-    console.log(this.pins[index]);
     this.map.setView({
       lat: this.pins[index].latitude,
       lng: this.pins[index].longitude}, DEFAULT_ZOOM);

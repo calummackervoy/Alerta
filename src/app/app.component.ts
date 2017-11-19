@@ -16,11 +16,6 @@ export class MyApp {
   //rootPage:any = TabsPage;
   rootPage: any = HomePage;
 
-  centreOnPin(index: number) {
-    //pass onto map
-    this.map.centreOnPin(index);
-  }
-
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     public map: Map) {
     platform.ready().then(() => {

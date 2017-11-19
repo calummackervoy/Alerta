@@ -8,9 +8,14 @@
   <ion-content>
     <ion-list>
       <div *ngIf="map">
-        <button ion-item *ngFor="let pin of map.pins" (click)="centreOnPin(pin.id)">
-          {{ pin.name }}
-        </button>
+        <div ion-item *ngFor="let pin of map.pins" (click)="map.centreOnPin(pin.id)">
+          <button ion-button full>
+            {{ pin.name }}
+          </button>
+          <button ion-button outline item-end icon-left (click)="map.removePin(pin.id)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </div>
       </div>
     </ion-list>
   </ion-content>
