@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
+import { ModalController } from "ionic-angular";
 import L from 'leaflet';
 import { Geolocation, Geoposition, GeolocationOptions } from '@ionic-native/geolocation';
 import { Pin } from './Pin';
+import { ViewpinmodalPage } from './pages/viewpinmodal/viewpinmodal';
 
 //Purposes: manages the map & the geolocations attached to it
 
@@ -14,7 +16,7 @@ export class Map {
   hasMap: boolean;
   pins: Pin[];
 
-  constructor() {
+  constructor(public modalCtrl: ModalController) {
     this.hasMap = false;
   }
 
@@ -23,7 +25,7 @@ export class Map {
     let latlng = {lat: latitude, lng: longitude, date: new Date()};
     var pin = new Pin(new L.Marker(latlng).addTo(this.map),
       new L.Circle(latlng).setRadius(10).addTo(this.map));
-    pin.age = pin.positionMarker.date;
+    pin.age = new Date();
 
     pin.latitude = latitude;
     pin.longitude = longitude;
@@ -34,11 +36,13 @@ export class Map {
     //console.log("details: " + this.pins[i].details);
 
     pin.id = this.pins.length;
-    this.pins.push(pin);
 
-    //TODO: set pin on-click to open a pin detail view
-    //https://codedump.io/share/cXzrXfLOLC1e/1/ionic-2---leaflet-map-onclick-event
-    //.on('click', showMarkerMenu)
+    //set pin on-click to open a pin detail view
+    pin.positionMarker.on('click', () => {
+      this.createViewPinModal(pin);
+    });
+
+    this.pins.push(pin);
   }
 
   init() {
@@ -122,5 +126,14 @@ export class Map {
     this.map.setView({
       lat: this.pins[index].latitude,
       lng: this.pins[index].longitude}, DEFAULT_ZOOM);
+  }
+
+  createViewPinModal(pin: Pin) {
+    //make sure no other modal is active
+    //if(this.modal !== undefined) this.onModalClose();
+
+    let modal = this.modalCtrl.create(ViewpinmodalPage,
+      {name: pin.name, details: pin.details, age: pin.age});
+    modal.present();
   }
 }

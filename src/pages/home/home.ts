@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, Events } from 'ionic-angular';
-import { ActionSheetController } from 'ionic-angular';
+import { ActionSheetController, ModalController } from 'ionic-angular';
 import { Geofence } from '@ionic-native/geofence';
 import { GeofenceWrapper } from '../../GeofenceWrapper';
 import { Map } from '../../Map';
 import { Geolocation, Geoposition, GeolocationOptions } from '@ionic-native/geolocation';
-import { ModalController } from 'ionic-angular';
 import { AddpinmodalPage } from '../addpinmodal/addpinmodal';
 
 const GEOLOCATION_OPTIONS: GeolocationOptions = {
@@ -19,7 +18,6 @@ const GEOLOCATION_OPTIONS: GeolocationOptions = {
   templateUrl: 'home.html'
 })
 export class HomePage {
-
   modal: any;
 
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController,
@@ -40,7 +38,7 @@ export class HomePage {
     });
   }
 
-  openActionSheet() {
+  /*openActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Update Map',
       buttons: [
@@ -65,10 +63,13 @@ export class HomePage {
       ]
     });
     actionSheet.present();
-  }
+  }*/
 
-  //method to create AddpinmodalPage
+  //methods to create different modals
   createAddPinModal(e: any) {
+    //make sure no other modal is active
+    if(this.modal !== undefined) this.onModalClose();
+
     this.modal = this.modalCtrl.create(AddpinmodalPage, e);
     this.modal.present();
   }
