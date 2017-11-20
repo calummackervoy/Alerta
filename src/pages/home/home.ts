@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
 import { Geofence } from '@ionic-native/geofence';
 import { GeofenceWrapper } from '../../GeofenceWrapper';
@@ -20,8 +20,14 @@ const GEOLOCATION_OPTIONS: GeolocationOptions = {
 })
 export class HomePage {
 
+  modal: any;
+
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController,
-    public modalCtrl: ModalController, public map: Map) {
+    public modalCtrl: ModalController, public map: Map, public events: Events) {
+      events.subscribe('closemodal', () => {
+        console.log("caught close event");
+        this.onModalClose();
+      });
   }
 
   ionViewDidLoad() {
@@ -29,9 +35,8 @@ export class HomePage {
 
     //set the click listener
     this.map.map.on('click', (e: any) => {
-      //open modal for pin creation (with pos)
-      let modal = this.modalCtrl.create(AddpinmodalPage, e);
-      modal.present();
+      //parameter is the map location of the click/tap
+      this.createAddPinModal(e);
     });
   }
 
@@ -42,8 +47,8 @@ export class HomePage {
         {
           text: 'Add Pin',
           handler: () => {
-            let modal = this.modalCtrl.create(AddpinmodalPage);
-            modal.present();
+            //menu to create pin without predefined location
+            this.createAddPinModal(undefined);
           }
         },{
           text: 'Update Pin',
@@ -60,5 +65,20 @@ export class HomePage {
       ]
     });
     actionSheet.present();
+  }
+
+  //method to create AddpinmodalPage
+  createAddPinModal(e: any) {
+    this.modal = this.modalCtrl.create(AddpinmodalPage, e);
+    this.modal.present();
+  }
+
+  //event for modal self-closing
+  onModalClose() {
+    console.log("onModalClose called");
+    if(this.modal !== undefined) {
+      console.log("dismissing modal..");
+      this.modal.dismiss();
+    }
   }
 }

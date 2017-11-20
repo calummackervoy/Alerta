@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, /*EventEmitter, Output*/ } from '@angular/core';
+import { IonicPage, NavController, NavParams, ViewController, Events } from 'ionic-angular';
 import L from 'leaflet';
 import { Map } from '../../Map';
 import { Pin } from '../../Pin';
@@ -17,11 +17,14 @@ import { Pin } from '../../Pin';
   templateUrl: 'addpinmodal.html',
 })
 export class AddpinmodalPage {
+  //trigger modal dismissal
+  //@Output() close: EventEmitter<any> = new EventEmitter();
+
   pin: Pin;
   manualPos: boolean;
 
   constructor(public navCtrl: NavController, public params: NavParams,
-      public map: Map) {
+      public map: Map, public viewCtrl: ViewController, public events: Events) {
       this.pin = new Pin(new L.Marker(), new L.Circle());
 
       let e = params.get('latlng');
@@ -61,7 +64,12 @@ export class AddpinmodalPage {
     this.map.addPin(this.pin.latitude, this.pin.longitude, this.pin.details, this.pin.name);
     //this.map.updateGeoposition(0, pos);
 
-    //TODO: self-close
+    this.dismiss();
   }
 
+  dismiss() {
+    console.log("emitting close event");
+    //this.close.emit(null);
+    this.events.publish('closemodal', null);
+  }
 }
