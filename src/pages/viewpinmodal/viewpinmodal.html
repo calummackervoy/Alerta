@@ -14,15 +14,19 @@
 
 
 <ion-content padding>
-  <h1> {{ name }} </h1>
-  <button ion-button outline item-end icon-left (click)="dismiss()">
-    <ion-icon name="close"></ion-icon>
-  </button>
-  <p>
-    {{ details }}
-  </p>
-  <p>
-    {{ age }}
-  </p>
+  <div class = "viewpin-header">
+    <h1> {{ name }} </h1>
+    <button id = "viewpin-x-button" ion-button outline item-end icon-left (click)="dismiss()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </div>
+  <div class = "viewpin-body">
+    <p>
+      {{ details }}
+    </p>
+    <p>
+      {{ age }}
+    </p>
+  </div>
   <button ion-button full (click)="dismiss()">Cancel</button>
 </ion-content>

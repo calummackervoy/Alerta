@@ -1,3 +1,26 @@
 page-viewpinmodal {
+  .viewpin-header {
+    width:100%;
+  }
 
+  .viewpin-header h1 {
+    width:78%;
+    float: left;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  #viewpin-x-button {
+    width: 20%;
+    float: right;
+  }
+
+  .viewpin-body {
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+
+  .viewpin-body p {
+    margin-top: 25px;
+  }
 }
