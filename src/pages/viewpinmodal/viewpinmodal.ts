@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { Pin } from '../../Pin';
 
 /**
@@ -19,7 +19,8 @@ export class ViewpinmodalPage {
   details: string;
   age: Date;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public events: Events) {
     /*this.pin = navParams.get('pin');
 
     //if no pin parameter received flag error in text
@@ -47,6 +48,11 @@ export class ViewpinmodalPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewpinmodalPage');
+  }
+
+  dismiss() {
+    //console.log("emitting close event");
+    this.events.publish('closemodal', null);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ModalController } from "ionic-angular";
+import { ModalController, Events } from "ionic-angular";
 import L from 'leaflet';
 import { Geolocation, Geoposition, GeolocationOptions } from '@ionic-native/geolocation';
 import { Pin } from './Pin';
@@ -15,9 +15,15 @@ export class Map {
   centre: L.PointTuple;
   hasMap: boolean;
   pins: Pin[];
+  modal: any;
 
-  constructor(public modalCtrl: ModalController) {
+  constructor(public modalCtrl: ModalController, public events: Events) {
     this.hasMap = false;
+
+    events.subscribe('closemodal', () => {
+      //console.log("caught close event");
+      this.onModalClose();
+    });
   }
 
   public addPin(latitude: number, longitude: number, details: string, name: string): void {
@@ -132,8 +138,17 @@ export class Map {
     //make sure no other modal is active
     //if(this.modal !== undefined) this.onModalClose();
 
-    let modal = this.modalCtrl.create(ViewpinmodalPage,
+    this.modal = this.modalCtrl.create(ViewpinmodalPage,
       {name: pin.name, details: pin.details, age: pin.age});
-    modal.present();
+    this.modal.present();
+  }
+
+  //event for modal self-closing
+  onModalClose() {
+    //console.log("onModalClose called");
+    if(this.modal !== undefined) {
+      //console.log("dismissing modal..");
+      this.modal.dismiss();
+    }
   }
 }
