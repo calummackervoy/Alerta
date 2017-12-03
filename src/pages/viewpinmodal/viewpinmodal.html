@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>viewpinmodal</ion-title>
+    <ion-title>{{ name }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,6 @@
 
 <ion-content padding>
   <div class = "viewpin-header">
-    <h1> {{ name }} </h1>
     <button id = "viewpin-x-button" ion-button outline item-end icon-left (click)="dismiss()">
       <ion-icon name="close"></ion-icon>
     </button>

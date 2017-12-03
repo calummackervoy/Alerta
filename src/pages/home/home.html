@@ -1,21 +1,15 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <button ion-button menuToggle="left" start>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title><span id="pins">Pins</span> <span id="network">Network</span></ion-title>
+    <button id="rightMenuIcon" ion-button menuToggle="right" end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <!--<ion-nav-buttons side="right">
-    <button ng-click="locate();" class="button button-icon icon ion-pinpoint"></button>
-  </ion-nav-buttons>-->
-
-  <!--<button ion-button (click)="clickButton()" class="button">Initiate Map</button>-->
   <div id="map"> </div>
-
-  <div class = "menu" id = "home-menu">
-    <!--<button ion-button (click)="openActionSheet()" class="button">Update Map</button>-->
-  </div>
 </ion-content>
