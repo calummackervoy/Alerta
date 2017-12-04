@@ -25,4 +25,17 @@ export class MyApp {
       splashScreen.hide();
     });
   }
+
+  changeDisplayName() {
+    console.log("change display name clicked");
+  }
+
+  viewNetwork() {
+    console.log("viewNetwork clicked");
+  }
+
+  invite() {
+    console.log("invite clicked");
+  }
+
 }

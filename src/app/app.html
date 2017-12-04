@@ -30,7 +30,23 @@
   </ion-header>
 
   <ion-content>
-    Test
+    <ion-list>
+      <div ion-item (click)="changeDisplayName()">
+        <p>
+          Display Name Goes Here
+        </p>
+      </div>
+      <div ion-item (click)="viewNetwork()">
+        <p>
+          Network Preview Goes Here
+        </p>
+      </div>
+      <div ion-item (click)="invite()">
+        <button ion-button full>
+          Invite
+        </button>
+      </div>
+    </ion-list>
   </ion-content>
 
 </ion-menu>
