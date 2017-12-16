@@ -1,0 +1,28 @@
+.navbar-light a {
+  color: #523e7c;
+}
+
+#search-bar {
+  margin-top: 5px;
+  float: left;
+  height: 30px;
+  max-width: 60%;
+}
+#search-button {
+  float: left;
+  margin-left: 5px;
+}
+#search-button img {
+  height: 30px;
+  width: 30px;
+}
+#navbarSupportedContent ul {
+  clear: both;
+}
+
+/*Tablets, desktops, laptops*/
+@media (min-width: 801px) {
+  .nav-item {
+    margin-left: 20px;
+  }
+}
