@@ -30,21 +30,17 @@
   .nav-item {
     margin-left: 20px;
   }
-
-  .screenshot {
-    float: left;
-    border-radius: 10px;
-    margin: 5px;
-    height: 400px;
-  }
 }
 
 /*smaller devices*/
 @media (max-width: 800px) {
-  .screenshot {
-    float: left;
-    border-radius: 10px;
-    margin: 5px;
-    height: 200px;
-  }
+
+}
+
+.screenshot {
+  float: left;
+  border-radius: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  max-width: 40%;
 }
