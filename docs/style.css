@@ -1,6 +1,6 @@
-.navbar-light a {
+/*.nav-link {
   color: #523e7c;
-}
+}*/
 
 #search-bar {
   margin-top: 5px;
@@ -20,9 +20,31 @@
   clear: both;
 }
 
+#body {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 /*Tablets, desktops, laptops*/
 @media (min-width: 801px) {
   .nav-item {
     margin-left: 20px;
+  }
+
+  .screenshot {
+    float: left;
+    border-radius: 10px;
+    margin: 5px;
+    height: 400px;
+  }
+}
+
+/*smaller devices*/
+@media (max-width: 800px) {
+  .screenshot {
+    float: left;
+    border-radius: 10px;
+    margin: 5px;
+    height: 200px;
   }
 }
