@@ -10,7 +10,7 @@
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- link to CSS doc-->
-    <style type="text/css"> @import url("docs/style.css"); </style>
+    <style type="text/css"> @import url("style.css"); </style>
   </head>
 
   <!-- body element-->
@@ -34,18 +34,18 @@
                 <input type="text" class="form-control" placeholder="Search">
               </div>
               <button type="submit" id="search-button" class="btn btn-default">
-                <img src="resources/search.png" alt="search icon"></img>
+                <img src="../resources/search.png" alt="search icon"></img>
               </button>
             </form>
             <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Home</a>
+              </li>
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Blog<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="docs/blog.html">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="docs/getinvolved.html">Get Involved</a>
+                <a class="nav-link" href="getinvolved.html">Get Involved</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://github.com/calummackervoy/alerta">GitHub</a>
@@ -60,10 +60,46 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            Body content
+            <h1> Latest Posts </h1>
+            <article>
+              <h2><a href="singlepost.html">Hello World!</a></h2>
+              <div class="date">
+                Calum Mackervoy -- December 17, 2017 00:05
+              </div>
+              <hr/>
+              <img src="../resources/posts/16122017/2.png" alt="screenshot of the main interface of the app" class="img-fluid screenshot">
+              <img src="../resources/posts/16122017/3.png" alt="screenshot of the list display of pins within the map" class="img-fluid screenshot">
+              <img src="../resources/posts/16122017/1.png" alt="screenshot of the form to add a new pin to the map" class="img-fluid screenshot">
+              <img src="../resources/posts/16122017/4.png" alt="screenshot of a selected pin and resulting detail display" class="img-fluid screenshot">
+              <br/>
+              <p class="lead" style="clear: both;">
+                The designs complete, the project created, dependencies initialised and template established, it was time to start coding.
+                Now that we've got some initial functionality in place, we decided that it was time to put up a "hello world" post on the website :-)
+              </p>
+              <p>
+                As you can see, the map is in place, pins can be added to it with arbitrary titles and descriptions, which can then be accessed in a list, edited
+                and destroyed at the press of a few buttons.
+              </p>
+              <p>
+                With the goal of releasing an alpha version of the app by May next year, the next objective is to establish networking capability within the app.
+                A secondary priority will be to begin with the styling of the app, so that it has a user-friendly, intuitive flow with a unique look &amp; feel.
+              </p>
+              <hr/>
+            </article>
+            <!--<ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">← Older</a></li>
+              <li class="page-item"><a class="page-link" href="#">Newer →</a></li>
+            </ul>-->
           </div>
           <div class="col-md-4">
-            Body content
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>All Posts</h4>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item"><a href="singlepost.html">1. Hello World! 17.12.2017</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
