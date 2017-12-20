@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300|Permanent+Marker');
+
+/*
+  FONTS
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Permanent Marker', cursive;
+*/
+
 /*.nav-link {
   color: #523e7c;
 }*/
@@ -20,19 +28,13 @@
   clear: both;
 }
 
-/*#title-bg {
-  position:absolute;
-  left:0px;
-  top:0px;
-  z-index:-1;
-  width: 100%;
-}*/
-
 #page-title {
-  position: relative;
-  left: 50%;
-  top: 50%;
   margin: auto;
+  font-family: 'Permanent Marker', cursive;
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 #body {
@@ -53,6 +55,13 @@
     height: 450px;
     z-index: -1;
   }
+
+  #page-title {
+    font-size: 124px;
+    position: relative;
+    left: 30%;
+    top: 30%;
+  }
 }
 
 /*smaller devices*/
@@ -62,6 +71,13 @@
     width: 100%;
     height: 450px;
     z-index: -1;
+  }
+
+  #page-title {
+    font-size: 64px;
+    position: relative;
+    left: 20%;
+    top: 20%;
   }
 }
 
