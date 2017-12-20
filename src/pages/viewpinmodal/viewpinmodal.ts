@@ -17,7 +17,7 @@ import { Pin } from '../../Pin';
 export class ViewpinmodalPage {
   name: string;
   details: string;
-  age: Date;
+  timestamp: Date;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public events: Events) {
@@ -28,22 +28,21 @@ export class ViewpinmodalPage {
       this.pin = new Pin(null, null);
       this.pin.name = "error";
       this.pin.details = "error";
-      this.pin.age = new Date();
+      this.pin.timestamp = new Date();
     }
     //otherwise calculate the age
-    else if(this.pin.age !== undefined){
-      this.pin.age = new Date(new Date().valueOf() - this.pin.age.valueOf());
+    else if(this.pin.timestamp !== undefined){
+      this.pin.timestamp = new Date(new Date().valueOf() - this.pin.timestamp.valueOf());
     }*/
 
     this.name = navParams.get('name');
     this.details = navParams.get('details');
-    this.age = navParams.get('age');
+    this.timestamp = navParams.get('age');
 
     //if no pin parameter received flag error in text
     if(this.name === undefined) this.name = "error";
     if(this.details === undefined) this.details = "error";
-    if(this.age === undefined) this.age = new Date();
-    else this.age = new Date(new Date().valueOf() - this.age.valueOf());
+    if(this.timestamp === undefined) this.timestamp = new Date();
   }
 
   ionViewDidLoad() {

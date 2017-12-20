@@ -26,7 +26,7 @@ export class MyApp {
     });
   }
 
-  changeDisplayName() {
+  DisplayName() {
     console.log("change display name clicked");
   }
 
