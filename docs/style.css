@@ -24,6 +24,9 @@
   height: 30px;
   width: 30px;
 }
+.navbar-brand {
+  font-family: 'Permanent Marker', cursive;
+}
 #navbarSupportedContent ul {
   clear: both;
 }
