@@ -91,12 +91,17 @@ body {
 
   #tile-bg-content {
     position: relative;
-    left: 20%;
-    top: 20%;
+    left: 10%;
+    top: 10%;
   }
 
   #page-title {
-    font-size: 64px;
+    font-size: 78px;
+  }
+
+  #heading-intro {
+    position: relative;
+    left: 10%;
   }
 }
 
