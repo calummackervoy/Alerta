@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController, Events } from 'ionic-angular';
 import { ActionSheetController, ModalController } from 'ionic-angular';
-import { Geofence } from '@ionic-native/geofence';
-import { GeofenceWrapper } from '../../GeofenceWrapper';
+//import { Geofence } from '@ionic-native/geofence';
+//import { GeofenceWrapper } from '../../GeofenceWrapper';
 import { Map } from '../../Map';
-import { Geolocation, Geoposition, GeolocationOptions } from '@ionic-native/geolocation';
+import { GeolocationOptions } from '@ionic-native/geolocation';
 import { AddpinmodalPage } from '../addpinmodal/addpinmodal';
 
-const GEOLOCATION_OPTIONS: GeolocationOptions = {
+/*const GEOLOCATION_OPTIONS: GeolocationOptions = {
    maximumAge: 3000, timeout: 5000, enableHighAccuracy: true
-};
+};*/
 
 //TODO: add toast notification https://ionicframework.com/docs/api/components/toast/ToastController/
 

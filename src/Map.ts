@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ModalController, Events } from "ionic-angular";
 import L from 'leaflet';
-import { Geolocation, Geoposition, GeolocationOptions } from '@ionic-native/geolocation';
+import { Geoposition } from '@ionic-native/geolocation';
 import { Pin } from './Pin';
 import { ViewpinmodalPage } from './pages/viewpinmodal/viewpinmodal';
 

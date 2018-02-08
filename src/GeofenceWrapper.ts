@@ -4,7 +4,7 @@ import { Geofence } from '@ionic-native/geofence';
 @Injectable()
 export class GeofenceWrapper {
   //array of the geofences in use
-  private geofences: Geofence[];
+  //private geofences: Geofence[];
 
   constructor(private geofence: Geofence) {
     // initialize the plugin
